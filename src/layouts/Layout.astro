@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+
 ---
 
 <!doctype html>
@@ -8,12 +9,33 @@ import '../styles/global.css';
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>Comunidade SouJunior: apoie a comunidade de profissionais juniores</title>
     </head>
     <body>
         <slot />
+
+        <script>
+            const observer = new IntersectionObserver(
+                (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    } else {
+                    entry.target.classList.remove('is-visible');
+                    }
+                });
+                },
+                {
+                threshold: 0.15,
+                }
+            );
+
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((element) => {
+                observer.observe(element);
+            });
+        </script>
     </body>
 </html>
 

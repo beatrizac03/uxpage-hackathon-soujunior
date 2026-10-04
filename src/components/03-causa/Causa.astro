@@ -32,7 +32,7 @@ const apoiadoresData = [
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       
       <!-- Coluna da Esquerda: Grid Espalhada no Desktop / Carrossel no Mobile -->
-      <div class="w-full flex justify-center">
+      <div class="w-full flex justify-center reveal ">
         <ApoioGridMobile client:visible apoiadoresData={apoiadoresData} />
       </div>
 
@@ -41,18 +41,18 @@ const apoiadoresData = [
         <div>
           <Tag 
             text="CAUSA" 
-            class="bg-[var(--azul-primaria)] text-[var(--branco)] inline-block" 
+            class="bg-[var(--azul-primaria)] text-[var(--branco)] inline-block reveal-left" 
           />
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[var(--amarelo-destaque)] mt-3 leading-tight">
+          <h2 class="reveal-left text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[var(--amarelo-destaque)] mt-3 leading-tight">
             Por que apoiar a SouJunior?
           </h2>
         </div>
 
-        <p class="text-base sm:text-lg text-blue-50 leading-relaxed font-sans">
+        <p class="reveal-left text-base sm:text-lg text-blue-50 leading-relaxed font-sans">
           A SouJunior transforma aprendizado em experiência prática. Por meio de projetos reais, mentorias e colaboração, cada participante constrói repertório para se aproximar da sua primeira oportunidade no mercado.
         </p>
 
-        <p class="text-base sm:text-lg text-blue-50 leading-relaxed font-sans">
+        <p class="reveal-left text-base sm:text-lg text-blue-50 leading-relaxed font-sans">
           Quando você apoia a SouJunior, contribui para manter essa jornada acessível e fortalecer a estrutura que faz tudo isso acontecer.
         </p>
       </div>

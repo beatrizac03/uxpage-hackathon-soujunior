@@ -11,10 +11,10 @@ import ButtonCTA from '../common/ButtonCTA.jsx';
       
       <!-- Lado Esquerdo: Texto -->
       <div class="flex flex-col gap-6 z-10">
-        <h1 class="text-[40px] md:text-[60px] font-bold tracking-tight text-(--amarelo-destaque) font-funnel-display leading-tight">
+        <h1 class="reveal text-[40px] md:text-[60px] font-bold tracking-tight text-(--amarelo-destaque) font-funnel-display leading-tight">
         Você transforma oportunidade em experiência real
       </h1>
-        <p class="text-lg text-(--branco)">
+        <p class="reveal text-lg text-(--branco)">
           Existimos para impulsionar a carreira de diversos profissionais iniciantes em tecnologia. Faça parte dessa transformação com doações a partir de R$ 2,00. 
         </p>
         
@@ -31,21 +31,38 @@ import ButtonCTA from '../common/ButtonCTA.jsx';
       </div>
 
       <!-- Lado Direito: Container com o bichinho ampliado -->
-      <div class="flex justify-center items-center min-h-[450px] sm:min-h-[550px] lg:min-h-[600px] relative w-full">
+      <div class="reveal flex justify-center items-center min-h-[450px] sm:min-h-[550px] lg:min-h-[600px] relative w-full">
         <!-- Mantemos a largura base do container idêntica à original -->
         <div class="relative w-full max-w-[650px] flex items-center justify-center">
           
-          <!-- Forma Amarela intocada (tamanho original de 500px no desktop) -->
+          <!-- Forma Amarela intocada (z-0 fica garantidamente atrás) -->
           <div 
             id="hero-yellow-shape" 
             class="absolute w-[320px] h-[320px] sm:w-[440px] sm:h-[440px] lg:w-[500px] lg:h-[500px] rounded-[120px] sm:rounded-[160px] lg:rounded-[200px] bg-(--amarelo-destaque) opacity-90 transition-transform duration-75 ease-out will-change-transform z-0 pointer-events-none"
           ></div>
 
-          <!-- Apenas o Vídeo/Bichinho ampliado com scale-135 ou scale-150 no desktop -->
-          <video autoplay loop muted playsinline class="w-full h-auto relative z-10 scale-125 lg:scale-140 drop-shadow-2xl">
-            <source src="/hero_avatar.webm" type="video/webm" />
-            O seu navegador não suporta vídeos HTML5.
-          </video>
+          <!-- Contêiner do Mascote com z-10 para ficar na frente do amarelo -->
+          <div class="w-full h-auto relative z-10 flex items-center justify-center">
+            
+            <!-- Imagem Estática Fallback (Visível APENAS no iPhone / Mobile) -->
+            <img
+              src="/hero_avatar_preview.png"
+              alt="Mascote SouJunior"
+              class="block md:hidden w-[75%] max-w-[300px] h-auto object-contain"
+            />
+
+            <!-- Vídeo WebM Original (Visível APENAS no Desktop / PC) -->
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              class="hidden md:block w-full h-auto scale-125 lg:scale-140"
+            >
+              <source src="/hero_avatar.webm" type="video/webm" />
+            </video>
+
+          </div>
           
         </div>
       </div>

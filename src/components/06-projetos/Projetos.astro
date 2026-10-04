@@ -9,10 +9,10 @@ import CardsCarrossel from './CardsCarrossel.astro'
     <!-- Cabeçalho idêntico ao Layout do Figma -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
       <div class="max-w-2xl">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-[var(--amarelo-destaque)] leading-tight">
+        <h2 class="reveal-left text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-[var(--amarelo-destaque)] leading-tight">
           Projetos que colocam a comunidade em prática
         </h2>
-        <p class="text-sm sm:text-base text-blue-100 font-sans mt-3 leading-relaxed">
+        <p class="reveal-left text-sm sm:text-base text-blue-100 font-sans mt-3 leading-relaxed">
           A SouJunior aprende construindo. A comunidade desenvolve e mantém projetos reais que fortalecem o próprio ecossistema e criam experiências práticas para quem está começando na tecnologia.
         </p>
       </div>
@@ -20,7 +20,7 @@ import CardsCarrossel from './CardsCarrossel.astro'
     </div>
 
     <!-- Carrossel 3D em Leque (CodePen) -->
-    <CardsCarrossel client:visible />
+    <CardsCarrossel />
 
   </div>
 </section>
