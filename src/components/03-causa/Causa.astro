@@ -1,27 +1,32 @@
 ---
-// src/components/sections/Causa.astro
-import ApoioGridMobile from './ApoioGridMobile.jsx';
+import { Image } from 'astro:assets';
 import Tag from '../common/Tag.astro';
+
+// Importando as imagens diretamente para o Astro conseguir otimizá-las no build
+import infraImg from '../../assets/infraestrutura.webp';
+import mentoriasImg from '../../assets/mentorias.webp';
+import projetosImg from '../../assets/projetos-reais.webp';
+import comunidadeImg from '../../assets/comunidade.svg'; // Se for SVG, pode manter ou usar Image
 
 const apoiadoresData = [
   {
     title: "infraestrutura",
-    image: "/infraestrutura.webp",
+    image: infraImg,
     description: "Manutenção de servidores, ferramentas e suporte para os projetos de alunos."
   },
   {
     title: "mentorias gratuitas",
-    image: "/mentorias.webp",
+    image: mentoriasImg,
     description: "Sessões online com profissionais experientes no mercado de tecnologia."
   },
   {
     title: "projetos reais",
-    image: "/projetos-reais.webp",
+    image: projetosImg,
     description: "Vivência prática em times multidisciplinares construindo software real."
   },
   {
     title: "comunidade",
-    image: "/comunidade.svg",
+    image: comunidadeImg,
     description: "Networking, troca de conhecimento e suporte mútuo para carreira tech."
   }
 ];
@@ -31,12 +36,76 @@ const apoiadoresData = [
   <div class="mx-auto max-w-(--breakpoint-site) px-4 sm:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       
-      <!-- Coluna da Esquerda: Grid Espalhada no Desktop / Carrossel no Mobile -->
-      <div class="w-full flex justify-center reveal ">
-        <ApoioGridMobile client:visible apoiadoresData={apoiadoresData} />
+      {/* Coluna da Esquerda: Grid Espalhada no Desktop / Carrossel no Mobile */}
+      <div class="w-full flex justify-center reveal">
+        <div class="w-full">
+          
+          {/* ================= DESKTOP: Layout "Espalhado" Organizado ================= */}
+          <div class="hidden lg:grid grid-cols-2 gap-8 items-center max-w-xl mx-auto relative py-6">
+            {apoiadoresData.map((item, index) => (
+              <div 
+                class={`relative w-full h-[320px] rounded-3xl overflow-hidden shadow-2xl border border-white/20 group cursor-pointer transition-all duration-300 hover:scale-105 hover:border-cyan-400/50 ${
+                  index === 0 ? '-translate-y-6' : 
+                  index === 1 ? 'translate-y-6' : 
+                  index === 2 ? '-translate-y-4' : 'translate-y-8'
+                }`}
+              >
+                {/* Imagem Otimizada pelo Astro */}
+                <Image 
+                  src={item.image} 
+                  alt={item.title}
+                  width={600}
+                  height={600}
+                  class="absolute inset-0 w-full h-full object-cover brightness-75 group-hover:brightness-90 transition-all duration-300"
+                />
+                <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/80" />
+
+                <div class="absolute inset-0 p-6 flex flex-col justify-between">
+                  <h3 class="text-2xl font-display font-bold text-cyan-400 lowercase tracking-wide drop-shadow-md">
+                    {item.title}
+                  </h3>
+                  <p class="text-sm text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-950/70 backdrop-blur-md p-3 rounded-xl border border-white/10">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ================= MOBILE / TABLET: Carrossel Horizontal ================= */}
+          <div class="lg:hidden w-full">
+            <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-4 pb-6 px-4 -mx-4">
+              {apoiadoresData.map((item) => (
+                <div 
+                  class="snap-center shrink-0 w-[280px] sm:w-[320px] h-[360px] rounded-3xl overflow-hidden shadow-2xl border border-white/20 relative group first:ml-4 last:mr-4"
+                >
+                  <Image 
+                    src={item.image} 
+                    alt={item.title} 
+                    width={600}
+                    height={600}
+                    class="absolute inset-0 w-full h-full object-cover brightness-75"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/80" />
+
+                  <div class="absolute inset-0 p-6 flex flex-col justify-between">
+                    <h3 class="text-2xl font-display font-bold text-cyan-400 lowercase tracking-wide drop-shadow-md">
+                      {item.title}
+                    </h3>
+                    <p class="text-sm text-white/90 bg-slate-950/70 backdrop-blur-md p-3 rounded-xl border border-white/10">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Nota: O indicador de pontos (dots) com estado ativo via JS foi removido para ganhar pureza estática, o carrossel continua perfeitamente navegável por toque horizontal (snap-x). */}
+          </div>
+
+        </div>
       </div>
 
-      <!-- Coluna da Direita: Textos -->
+      {/* Coluna da Direita: Textos */}
       <div class="flex flex-col justify-center space-y-6 text-center lg:text-left">
         <div>
           <Tag 
