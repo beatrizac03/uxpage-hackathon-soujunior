@@ -21,7 +21,9 @@ export default function ApoioGridMobile({ apoiadoresData }) {
             {/* Imagem de Fundo */}
             <img 
               src={item.image} 
-              alt={item.title} 
+              alt={item.title}
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover brightness-75 group-hover:brightness-90 transition-all duration-300"
             />
             {/* Gradiente de leitura */}

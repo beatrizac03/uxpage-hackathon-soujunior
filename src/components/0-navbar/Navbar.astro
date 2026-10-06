@@ -19,7 +19,15 @@ const navLinks = [
       
       <!-- Logo SouJunior -->
       <a href="https://www.soujunior.tech/" class="flex items-center gap-2.5 shrink-0 group">
-        <Image src="/logo-soujunior.svg" alt="Logo SouJunior" width={130} height={45} class="w-[120px] sm:w-[150px] h-auto transition-transform duration-300 group-hover:scale-110" />
+        <Image 
+          src="/logo-soujunior.svg" 
+          alt="Logo SouJunior" 
+          width={130} 
+          height={45} 
+          loading="eager"
+          fetchpriority="high"
+          class="w-[120px] sm:w-[150px] h-auto transition-transform duration-300 group-hover:scale-110" 
+        />
       </a>
 
       <!-- Links de Navegação Desktop (Centralizados e com maior espaçamento) -->

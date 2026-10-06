@@ -37,15 +37,17 @@ html {
 @layer base {
   @font-face {
     font-family: 'Funnel Sans';
-    src: url('/fonts/FunnelSans-VariableFont_wght.ttf') format('truetype');
+    src: url('/fonts/FunnelSans-VariableFont_wght.woff2') format('woff2');
     font-weight: 100 900;
+    font-display: optional;
   }
 
   @font-face {
     font-family: 'Funnel Display';
-    src: url('/fonts/FunnelDisplay-VariableFont_wght.ttf') format('truetype');
+    src: url('/fonts/FunnelDisplay-VariableFont_wght.woff2') format('woff2');
     letter-spacing: 2px;
     font-weight: 100 900;
+    font-display: optional;
   }
 
   :root {
@@ -94,7 +96,7 @@ html {
   }
 }
 
-.reveal {
+/* .reveal {
   opacity: 0;
   transform: translateY(30px);
   transition:
@@ -137,4 +139,4 @@ html {
     transform: none;
     transition: none;
   }
-}
+} */

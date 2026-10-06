@@ -5,25 +5,20 @@ const cardsData = [
   {
     main: "SouJunior Labs",
     sub: "Focado em projetos práticos em grupo. Funciona via Discord.",
-    image: "/labs.png",
+    image: "/labs.webp",
   },
   {
     main: "SouJunior",
     sub: "Site institucional, feito pela comunidade. ",
-    image: "/soujunior.png",
+    image: "/soujunior.webp",
   },
   {
     main: "SouJunior Talk",
     sub: "Para aprender inglês em comunidade. Funciona via Discord.",
-    image: "/talk.png",
+    image: "/talk.webp",
   },
 ];
 ---
-
-<!-- Importação das fontes Funnel Display e Funnel Sans -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;600;700&family=Funnel+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <section class="reveal cards-section py-12 md:py-20 w-full flex justify-center items-center">
   <div class="cards-container">
@@ -38,7 +33,15 @@ const cardsData = [
             <i class="fa-solid fa-heart"></i>
           </button>
         </div>
-        <img class="avatar-img" src={card.image} alt={card.main} />
+        
+        <!-- Mantendo a tag <img> com lazy loading otimizado para a pasta public -->
+        <img 
+          class="avatar-img" 
+          src={card.image} 
+          alt={card.main} 
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     ))}
   </div>
@@ -46,10 +49,9 @@ const cardsData = [
 
 <style>
   :root {
-    --card-bg: #ffffff; /* Fundo branco base para todos os cartões */
-    --roxo: #1e1b4b; /* Ajuste para o tom de roxo desejado do tema */
+    --card-bg: #ffffff;
+    --roxo: #1e1b4b;
 
-    /* Aumentado o tamanho base das cartas */
     --scale-level-1: 1.2; 
     --scale-level-2: 0.98; 
 
@@ -78,7 +80,6 @@ const cardsData = [
   .cards-container .card {
     display: flex;
     flex-direction: column;
-    /* Cartões maiores no desktop (largura aumentada para 330px) */
     width: 330px;
     padding: 2rem 2rem 0 2rem;
     border-radius: 2.2vw;
@@ -167,7 +168,6 @@ const cardsData = [
     align-self: center;
     flex-grow: 1;
     width: 100%;
-    /* Imagens maiores e proporcionais */
     max-height: 210px;
     object-fit: contain;
     margin-top: 1.2rem;
@@ -188,8 +188,6 @@ const cardsData = [
     transition: all 0.3s;
     z-index: 2;
   }
-
-  /* Posicionamento em leque expandido para acomodar os cartões maiores */
 
   /* 1º Cartão (Esquerda) */
   .cards-container .card:nth-child(1) {
@@ -235,7 +233,6 @@ const cardsData = [
     visibility: visible;
   }
 
-  /* Responsividade para ecrãs menores */
   @media (max-width: 768px) {
     .cards-container {
       max-width: 100%;
@@ -258,7 +255,6 @@ const cardsData = [
   const cards = document.querySelectorAll(".cards-container .card");
 
   cards.forEach((card) => {
-    // Desktop: Mouse hover
     card.addEventListener("mouseenter", () => {
       cards.forEach((c) => {
         if (c == card) c.classList.add("active");
@@ -272,7 +268,6 @@ const cardsData = [
       });
     });
 
-    // Mobile: Touch para alternar o estado do cartão
     card.addEventListener("touchstart", () => {
       cards.forEach((c) => {
         if (c == card) {
@@ -291,7 +286,6 @@ const cardsData = [
     }, { passive: true });
   });
 
-  // Clicar fora limpa os estados ativos
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
     if (!target.closest(".card")) {
