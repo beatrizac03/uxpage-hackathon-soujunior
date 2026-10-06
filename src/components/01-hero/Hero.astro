@@ -1,7 +1,8 @@
 ---
 // src/components/01-hero/Hero.astro
 import { Image } from 'astro:assets';
-import ButtonCTA from '../common/ButtonCTA.jsx';
+import heroAvatar from '../../assets/hero_avatar_preview.webp';
+import ButtonCTA from '../common/ButtonCTA.astro';
 ---
 
 <section class="py-16 md:py-24 bg-(image:--gradient-1) max-md:pt-[110px] min-h-[90vh] overflow-hidden flex items-center relative" id="hero">
@@ -20,7 +21,6 @@ import ButtonCTA from '../common/ButtonCTA.jsx';
         
         <!-- Botão Apoiador Destacado (Desktop) -->
         <ButtonCTA 
-          client:visible 
           text="APOIAR A PARTIR DE R$2" 
           href="https://apoia.se/soujunior" 
           showHeartIcon={true}
@@ -45,9 +45,12 @@ import ButtonCTA from '../common/ButtonCTA.jsx';
           <div class="w-full h-auto relative z-10 flex items-center justify-center">
             
             <!-- Imagem Estática Fallback (Visível APENAS no iPhone / Mobile) -->
-            <img
-              src="/hero_avatar_preview.webp"
-              alt="Mascote SouJunior"
+            <Image 
+              src={heroAvatar} 
+              alt="Avatar Preview" 
+              width={300}
+              height={300}
+              loading="eager"
               fetchpriority="high"
               class="block md:hidden w-[75%] max-w-[300px] h-auto object-contain"
             />

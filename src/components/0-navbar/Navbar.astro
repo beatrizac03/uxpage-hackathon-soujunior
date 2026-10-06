@@ -1,7 +1,7 @@
 ---
 // src/components/0-navbar/Navbar.astro
 import { Image } from 'astro:assets';
-import ButtonCTA from '../common/ButtonCTA.jsx';
+import ButtonCTA from '../common/ButtonCTA.astro';
 
 const navLinks = [
   { texto: "início", url: "#hero" },
@@ -60,8 +60,7 @@ const navLinks = [
 
     <!-- Botão Apoiador Destacado (Apenas Desktop na Navbar - com gap maior) -->
     <div id="desktop-cta" class="hidden md:block shrink-0 ml-4 lg:ml-6">
-      <ButtonCTA 
-        client:visible 
+      <ButtonCTA
         text="APOIAR" 
         href="https://apoia.se/soujunior" 
         showHeartIcon={true}
@@ -86,8 +85,7 @@ const navLinks = [
     ))}
 
     <div class="mt-2 flex justify-center">
-      <ButtonCTA 
-        client:visible 
+      <ButtonCTA
         text="APOIAR" 
         href="https://apoia.se/soujunior" 
         showHeartIcon={true}
@@ -100,8 +98,7 @@ const navLinks = [
 <!-- Botão CTA Flutuante Fixo instanciado com o componente <ButtonCTA> -->
 <div id="floating-cta" class="fixed bottom-6 right-6 z-40 translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
   <div class="pointer-events-auto shadow-2xl rounded-full">
-    <ButtonCTA 
-      client:visible 
+    <ButtonCTA
       text="APOIAR" 
       href="https://apoia.se/soujunior" 
       showHeartIcon={true}

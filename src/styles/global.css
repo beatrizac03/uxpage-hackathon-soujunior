@@ -96,7 +96,7 @@ html {
   }
 }
 
-/* .reveal {
+.reveal {
   opacity: 0;
   transform: translateY(30px);
   transition:
@@ -139,4 +139,4 @@ html {
     transform: none;
     transition: none;
   }
-} */
+}

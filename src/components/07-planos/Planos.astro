@@ -1,7 +1,7 @@
 ---
 // src/components/sections/Planos.astro
 
-import ButtonCTA from '../common/ButtonCTA.jsx';
+import ButtonCTA from '../common/ButtonCTA.astro';
 
 const planosData = [
   { 
@@ -77,7 +77,7 @@ const planosData = [
             </p>
 
             <!-- Lista de Benefícios -->
-            <div class="mt-8">
+            <div class="mt-8 mb-8">
               <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-4">
                 Benefícios:
               </h4>
@@ -97,13 +97,12 @@ const planosData = [
           </div>
 
           <!-- Botão de Ação -->
-          <ButtonCTA 
-            client:visible 
+          <ButtonCTA
             text="Seja um apoiador" 
             href="https://apoia.se/soujunior" 
             showHeartIcon={true}
             target="_blank"
-            className="mt-5 lg:w-[80%] bg-[var(--amarelo-destaque)] text-slate-950 font-bold hover:bg-white m-auto transition-colors"
+            className=" lg:w-[80%] bg-[var(--amarelo-destaque)] text-slate-950 font-bold hover:bg-white m-auto transition-colors"
           />
 
         </div>
